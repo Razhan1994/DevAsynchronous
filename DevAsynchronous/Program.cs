@@ -3,7 +3,10 @@
 // See https://aka.ms/new-console-template for more information
 
 using System.Diagnostics;
+using DevAsynchronous;
 
-Console.WriteLine(DateTime.Now);
+await CatchWhenAllAggregateException.CatchAggregateException();
+
+
 Console.ReadKey();
 
