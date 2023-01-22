@@ -4,6 +4,6 @@
 
 using DevAsynchronous;
 
-var result = await UseWhenAnyToRun.GetUrlContent();
+await TaskWhenAllWithSequence.ProcessAllTasks();
 
 Console.ReadKey();

@@ -20,26 +20,27 @@ namespace DevAsynchronous
             var thirdTask = CallException();
             var fourthTask = CallSampleMethod();
 
-            var finalTask = await Task.WhenAny(firstTask, secondTask, fourthTask);
+            var finalTask = await Task.WhenAny(firstTask, secondTask, thirdTask);
 
-            return finalTask.Result.Content.ReadAsStringAsync().Result;
+            return await finalTask.Result.Content.ReadAsStringAsync();
         }
 
         static async Task<HttpResponseMessage> CallFirstUrl(string firstUrl, HttpClient client)
         {
-            await Task.Delay(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(2));
             return await client.GetAsync(firstUrl);
             
         }
 
         static async Task<HttpResponseMessage> CallSecondUrl(string secondUrl, HttpClient client)
         {
-            await Task.Delay(TimeSpan.FromSeconds(5));
+            await Task.Delay(TimeSpan.FromSeconds(3));
             return await client.GetAsync(secondUrl);
         }
 
         static async Task<HttpResponseMessage> CallException()
         {
+            await Task.Delay(TimeSpan.FromSeconds(1));
             throw new InvalidOperationException();
         }
 
