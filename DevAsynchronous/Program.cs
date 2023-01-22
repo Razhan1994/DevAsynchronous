@@ -4,6 +4,6 @@
 
 using DevAsynchronous;
 
-await TaskWhenAllWithSequence.ProcessAllTasks();
+await HandleExceptions.HandleThrownExceptions();
 
 Console.ReadKey();
